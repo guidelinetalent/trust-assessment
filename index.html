@@ -3,633 +3,578 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-<title>HR Trust Assessment · Guideline Talent</title>
-<meta name="description" content="A 30-question self-assessment for HR and TA professionals evaluating how employees experience trust with you.">
+<title>HR Trust Assessment - Guideline Talent</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,400;0,9..144,500;0,9..144,600;1,9..144,300;1,9..144,400&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,500;0,9..144,600;1,9..144,400&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
 <style>
 :root {
-  --green-dark:#213526;--green-mid:#324b39;--green-light:#4d6654;
-  --sage:#e6efcd;--sage-light:#f2f7e8;--white:#ffffff;
-  --gray-50:#f9f9f7;--gray-100:#f0f0ee;--gray-200:#e0e0dd;
-  --gray-400:#b0b0ab;--gray-500:#8a8a85;--text:#1e2b22;
-  --font-serif:'Fraunces',Georgia,serif;--font-sans:'Inter',system-ui,sans-serif;
-  --radius-sm:8px;--radius-md:16px;--radius-lg:24px;
+  --gd:#213526;
+  --gm:#324b39;
+  --gl:#4d6654;
+  --sage:#e6efcd;
+  --sage2:#f2f7e8;
+  --white:#ffffff;
+  --g100:#f0f0ee;
+  --g200:#e0e0dd;
+  --g400:#b0b0ab;
+  --g500:#8a8a85;
+  --text:#1e2b22;
+  --serif:'Fraunces',Georgia,serif;
+  --sans:'Inter',system-ui,sans-serif;
 }
 *,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
-html,body{height:100%;font-family:var(--font-sans);background:var(--green-dark);-webkit-font-smoothing:antialiased;}
-#app{width:100%;max-width:480px;margin:0 auto;min-height:100vh;background:var(--white);position:relative;overflow-x:hidden;}
-.screen{display:none;min-height:100vh;}
+html,body{height:100%;font-family:var(--sans);background:var(--gd);-webkit-font-smoothing:antialiased;}
+#app{width:100%;max-width:480px;margin:0 auto;min-height:100vh;background:var(--white);}
+.screen{display:none;}
 .screen.active{display:block;}
 
-/* ---- INTRO ---- */
-.intro-hero{background:var(--green-dark);padding:2.5rem 1.5rem 2rem;color:var(--white);}
-.intro-logo{font-family:var(--font-serif);font-size:0.85rem;font-weight:400;color:var(--sage);opacity:0.85;letter-spacing:0.02em;margin-bottom:2rem;display:flex;align-items:center;gap:6px;}
-.intro-title{font-family:var(--font-serif);font-size:2.1rem;font-weight:500;line-height:1.18;color:var(--white);margin-bottom:0.75rem;}
-.intro-subtitle{font-size:0.9rem;color:var(--sage);opacity:0.85;line-height:1.65;margin-bottom:0;}
-.intro-body{padding:1.5rem 1.5rem 3rem;}
-.intro-desc{font-size:0.9rem;color:var(--green-mid);line-height:1.75;margin-bottom:1.5rem;}
-.dim-cards{display:flex;flex-direction:column;gap:0.625rem;margin-bottom:1.75rem;}
-.dim-card{background:var(--sage-light);border:1px solid rgba(77,102,84,0.2);border-radius:var(--radius-sm);padding:0.875rem 1rem;display:flex;gap:0.875rem;align-items:flex-start;}
-.dim-num{font-family:var(--font-serif);font-size:1.2rem;font-weight:500;color:var(--green-light);line-height:1;flex-shrink:0;min-width:24px;}
-.dim-info{}
-.dim-name{font-size:0.8rem;font-weight:500;color:var(--green-dark);margin-bottom:2px;}
-.dim-desc{font-size:0.75rem;color:var(--green-light);line-height:1.4;}
-.intro-meta{display:flex;gap:1rem;flex-wrap:wrap;font-size:0.75rem;color:var(--gray-500);margin-bottom:1.75rem;}
-.intro-meta span{display:flex;align-items:center;gap:4px;}
-.btn-start{width:100%;background:var(--green-dark);color:var(--sage);font-family:var(--font-serif);font-size:1.1rem;font-weight:500;padding:1rem;border-radius:var(--radius-sm);border:none;cursor:pointer;letter-spacing:0.01em;transition:background 0.18s,transform 0.1s;}
-.btn-start:hover{background:var(--green-mid);}
-.btn-start:active{transform:scale(0.98);}
+.hero{background:var(--gd);padding:2.5rem 1.5rem 2rem;}
+.logo{font-family:var(--serif);font-size:0.85rem;color:var(--sage);opacity:0.85;margin-bottom:2rem;}
+.hero-title{font-family:var(--serif);font-size:2rem;font-weight:500;line-height:1.2;color:var(--white);margin-bottom:0.75rem;}
+.hero-sub{font-size:0.875rem;color:var(--sage);opacity:0.8;line-height:1.65;}
 
-/* ---- PROGRESS HEADER ---- */
-.progress-header{background:var(--green-dark);padding:1rem 1.5rem;position:sticky;top:0;z-index:10;}
-.progress-top{display:flex;justify-content:space-between;align-items:center;margin-bottom:0.5rem;}
-.progress-section-label{font-family:var(--font-serif);font-size:0.78rem;font-weight:400;color:var(--sage);opacity:0.85;}
-.progress-count{font-size:0.72rem;color:var(--sage);opacity:0.55;}
-.progress-track{height:3px;background:rgba(230,239,205,0.2);border-radius:2px;overflow:hidden;}
-.progress-fill{height:100%;background:var(--sage);border-radius:2px;transition:width 0.4s ease;}
+.body-pad{padding:1.5rem 1.25rem 3rem;}
+.intro-desc{font-size:0.875rem;color:var(--gm);line-height:1.75;margin-bottom:1.5rem;}
 
-/* ---- QUESTION SCREEN ---- */
-.section-wrap{padding:1.5rem 1.25rem 3rem;}
-.section-header{margin-bottom:1.5rem;}
-.section-badge{display:inline-block;font-size:0.68rem;font-weight:600;letter-spacing:0.08em;text-transform:uppercase;color:var(--green-light);background:var(--sage-light);border:1px solid rgba(77,102,84,0.2);border-radius:20px;padding:3px 10px;margin-bottom:0.65rem;}
-.section-title{font-family:var(--font-serif);font-size:1.35rem;font-weight:500;color:var(--green-dark);line-height:1.25;margin-bottom:0.4rem;}
-.section-desc{font-size:0.82rem;color:var(--gray-500);line-height:1.6;}
-.q-card{background:var(--white);border:1px solid var(--gray-200);border-radius:var(--radius-md);padding:1.1rem 1rem 0.9rem;margin-bottom:0.75rem;transition:border-color 0.2s;}
-.q-card.answered{border-color:var(--green-light);}
-.q-number{font-size:0.67rem;font-weight:600;letter-spacing:0.07em;text-transform:uppercase;color:var(--green-light);margin-bottom:0.4rem;}
+.dim-list{display:flex;flex-direction:column;gap:0.625rem;margin-bottom:1.75rem;}
+.dim-item{background:var(--sage2);border:1px solid rgba(77,102,84,0.2);border-radius:8px;padding:0.875rem 1rem;display:flex;gap:0.875rem;}
+.dim-n{font-family:var(--serif);font-size:1.2rem;font-weight:500;color:var(--gl);flex-shrink:0;min-width:24px;line-height:1;}
+.dim-name{font-size:0.8rem;font-weight:500;color:var(--gd);margin-bottom:2px;}
+.dim-desc{font-size:0.75rem;color:var(--gl);line-height:1.4;}
+
+.meta-row{display:flex;gap:1rem;flex-wrap:wrap;font-size:0.75rem;color:var(--g500);margin-bottom:1.75rem;}
+
+.btn{width:100%;background:var(--gd);color:var(--sage);font-family:var(--serif);font-size:1.05rem;font-weight:500;padding:1rem;border-radius:8px;border:none;cursor:pointer;letter-spacing:0.01em;transition:background 0.18s;}
+.btn:hover{background:var(--gm);}
+.btn-outline{background:transparent;color:var(--gd);border:1.5px solid var(--g200);font-family:var(--serif);font-size:0.9rem;font-weight:500;padding:0.8rem;border-radius:8px;cursor:pointer;width:100%;transition:background 0.18s;}
+.btn-outline:hover{background:var(--g100);}
+
+.prog-hdr{background:var(--gd);padding:1rem 1.5rem;position:sticky;top:0;z-index:10;}
+.prog-top{display:flex;justify-content:space-between;align-items:center;margin-bottom:0.5rem;}
+.prog-lbl{font-family:var(--serif);font-size:0.78rem;color:var(--sage);opacity:0.85;}
+.prog-ct{font-size:0.72rem;color:var(--sage);opacity:0.55;}
+.prog-track{height:3px;background:rgba(230,239,205,0.2);border-radius:2px;overflow:hidden;}
+.prog-bar{height:100%;background:var(--sage);border-radius:2px;transition:width 0.4s ease;width:0%;}
+
+.sec-wrap{padding:1.5rem 1.25rem 3rem;}
+.sec-badge{display:inline-block;font-size:0.68rem;font-weight:600;letter-spacing:0.08em;text-transform:uppercase;color:var(--gl);background:var(--sage2);border:1px solid rgba(77,102,84,0.2);border-radius:20px;padding:3px 10px;margin-bottom:0.65rem;}
+.sec-title{font-family:var(--serif);font-size:1.3rem;font-weight:500;color:var(--gd);line-height:1.25;margin-bottom:0.4rem;}
+.sec-desc{font-size:0.82rem;color:var(--g500);line-height:1.6;margin-bottom:1.5rem;}
+
+.q-card{background:var(--white);border:1px solid var(--g200);border-radius:14px;padding:1.1rem 1rem 0.9rem;margin-bottom:0.75rem;transition:border-color 0.2s;}
+.q-card.done{border-color:var(--gl);}
+.q-num{font-size:0.67rem;font-weight:600;letter-spacing:0.07em;text-transform:uppercase;color:var(--gl);margin-bottom:0.4rem;}
 .q-text{font-size:0.875rem;line-height:1.6;color:var(--text);margin-bottom:0.9rem;}
 .rating-row{display:flex;justify-content:space-between;gap:4px;}
-.r-option{flex:1;display:flex;flex-direction:column;align-items:center;gap:4px;cursor:pointer;}
-.r-option input[type="radio"]{display:none;}
-.r-circle{width:100%;max-width:48px;aspect-ratio:1;border-radius:50%;border:1.5px solid var(--gray-200);background:var(--gray-50);display:flex;align-items:center;justify-content:center;font-family:var(--font-serif);font-size:1rem;font-weight:500;color:var(--gray-500);cursor:pointer;transition:all 0.14s;margin:0 auto;}
-.r-option:hover .r-circle{border-color:var(--green-light);background:var(--sage-light);color:var(--green-dark);}
-.r-option input:checked + .r-circle{background:var(--green-dark);border-color:var(--green-dark);color:var(--sage);}
-.r-label{font-size:0.6rem;color:var(--gray-400);text-align:center;line-height:1.2;}
-.q-nav{display:flex;flex-direction:column;gap:0.75rem;margin-top:1.5rem;}
-.btn-next{width:100%;background:var(--green-dark);color:var(--sage);font-family:var(--font-serif);font-size:1rem;font-weight:500;padding:0.9rem;border-radius:var(--radius-sm);border:none;cursor:pointer;transition:background 0.18s,transform 0.1s;letter-spacing:0.01em;}
-.btn-next:hover{background:var(--green-mid);}
-.btn-next:active{transform:scale(0.98);}
-.btn-back{width:100%;background:transparent;color:var(--green-light);font-family:var(--font-sans);font-size:0.85rem;font-weight:500;padding:0.7rem;border-radius:var(--radius-sm);border:1.5px solid var(--gray-200);cursor:pointer;transition:background 0.18s;}
-.btn-back:hover{background:var(--gray-50);}
-.validation-error{font-size:0.78rem;color:#a03030;text-align:center;padding:0.5rem;display:none;}
-.validation-error.show{display:block;}
+.r-opt{flex:1;display:flex;flex-direction:column;align-items:center;gap:4px;cursor:pointer;}
+.r-opt input{display:none;}
+.r-circle{width:100%;max-width:48px;aspect-ratio:1;border-radius:50%;border:1.5px solid var(--g200);background:var(--g100);display:flex;align-items:center;justify-content:center;font-family:var(--serif);font-size:1rem;font-weight:500;color:var(--g500);cursor:pointer;transition:all 0.14s;margin:0 auto;}
+.r-opt:hover .r-circle{border-color:var(--gl);background:var(--sage);color:var(--gd);}
+.r-opt input:checked + .r-circle{background:var(--gd);border-color:var(--gd);color:var(--sage);}
+.r-lbl{font-size:0.6rem;color:var(--g400);text-align:center;line-height:1.2;}
 
-/* ---- CAPTURE SCREEN ---- */
-.capture-hero{background:var(--green-dark);padding:2.5rem 1.5rem 2rem;}
-.capture-title{font-family:var(--font-serif);font-size:1.85rem;font-weight:500;line-height:1.2;color:var(--white);margin-bottom:0.5rem;}
-.capture-subtitle{font-size:0.875rem;color:var(--sage);opacity:0.8;line-height:1.6;}
-.capture-body{padding:1.5rem 1.25rem 3rem;}
-.form-group{margin-bottom:1.1rem;}
-.form-label{display:block;font-size:0.78rem;font-weight:500;color:var(--green-dark);margin-bottom:0.4rem;letter-spacing:0.02em;}
-.form-input{width:100%;padding:0.75rem 1rem;border:1.5px solid var(--gray-200);border-radius:var(--radius-sm);font-family:var(--font-sans);font-size:0.9rem;color:var(--text);background:var(--white);transition:border-color 0.2s;-webkit-appearance:none;}
-.form-input:focus{outline:none;border-color:var(--green-light);}
-.checkbox-row{display:flex;align-items:flex-start;gap:0.75rem;background:var(--sage-light);border:1px solid rgba(77,102,84,0.2);border-radius:var(--radius-sm);padding:0.9rem 1rem;margin-bottom:1.25rem;cursor:pointer;}
-.checkbox-row input[type="checkbox"]{width:18px;height:18px;flex-shrink:0;cursor:pointer;accent-color:var(--green-dark);margin-top:2px;}
-.checkbox-label{font-size:0.82rem;color:var(--green-dark);line-height:1.5;}
-.checkbox-label strong{font-weight:500;}
-.btn-submit{width:100%;background:var(--green-dark);color:var(--sage);font-family:var(--font-serif);font-size:1.1rem;font-weight:500;padding:1rem;border-radius:var(--radius-sm);border:none;cursor:pointer;letter-spacing:0.01em;transition:background 0.18s,transform 0.1s;}
-.btn-submit:hover{background:var(--green-mid);}
-.btn-submit:active{transform:scale(0.98);}
-.submit-error{font-size:0.78rem;color:#a03030;text-align:center;margin-top:0.5rem;display:none;}
-.submit-error.show{display:block;}
+.btn-row{display:flex;flex-direction:column;gap:0.75rem;margin-top:1.5rem;}
+.err{font-size:0.78rem;color:#a03030;text-align:center;padding:0.4rem;display:none;}
+.err.show{display:block;}
 
-/* ---- PROCESSING ---- */
-#processing{background:var(--green-dark);display:none;align-items:center;justify-content:center;flex-direction:column;gap:1.5rem;padding:3rem 2rem;}
-#processing.active{display:flex;}
-.spinner{width:48px;height:48px;border:3px solid rgba(230,239,205,0.2);border-top-color:var(--sage);border-radius:50%;animation:spin 0.9s linear infinite;}
+.cap-hero{background:var(--gd);padding:2.5rem 1.5rem 2rem;}
+.cap-title{font-family:var(--serif);font-size:1.75rem;font-weight:500;color:var(--white);line-height:1.2;margin-bottom:0.5rem;}
+.cap-sub{font-size:0.875rem;color:var(--sage);opacity:0.8;line-height:1.65;}
+
+.field-label{display:block;font-size:0.78rem;font-weight:500;color:var(--gd);margin-bottom:0.4rem;}
+.field-input{width:100%;padding:0.75rem 1rem;border:1.5px solid var(--g200);border-radius:8px;font-family:var(--sans);font-size:0.9rem;color:var(--text);background:var(--white);-webkit-appearance:none;margin-bottom:1rem;}
+.field-input:focus{outline:none;border-color:var(--gl);}
+.check-row{display:flex;align-items:flex-start;gap:0.75rem;background:var(--sage2);border:1px solid rgba(77,102,84,0.2);border-radius:8px;padding:0.9rem 1rem;margin-bottom:1.25rem;cursor:pointer;}
+.check-row input{width:18px;height:18px;flex-shrink:0;cursor:pointer;accent-color:var(--gd);margin-top:2px;}
+.check-lbl{font-size:0.82rem;color:var(--gd);line-height:1.5;}
+
+#screen-processing{background:var(--gd);display:none;align-items:center;justify-content:center;flex-direction:column;gap:1.5rem;padding:3rem 2rem;min-height:100vh;}
+#screen-processing.active{display:flex;}
+.spinner{width:44px;height:44px;border:3px solid rgba(230,239,205,0.2);border-top-color:var(--sage);border-radius:50%;animation:spin 0.9s linear infinite;}
 @keyframes spin{to{transform:rotate(360deg);}}
-.processing-text{font-family:var(--font-serif);font-size:1.2rem;font-weight:400;color:var(--sage);text-align:center;line-height:1.5;}
-.processing-sub{font-size:0.82rem;color:var(--sage);opacity:0.6;text-align:center;}
+.proc-text{font-family:var(--serif);font-size:1.1rem;color:var(--sage);text-align:center;}
+.proc-sub{font-size:0.82rem;color:var(--sage);opacity:0.6;text-align:center;}
 
-/* ---- RESULTS ---- */
-.results-hero{background:var(--green-dark);padding:2.5rem 1.5rem 2rem;color:var(--white);}
-.results-name{font-size:0.82rem;color:var(--sage);opacity:0.75;margin-bottom:0.75rem;}
-.results-score-wrap{display:flex;align-items:baseline;gap:6px;margin-bottom:0.25rem;}
-.results-score{font-family:var(--font-serif);font-size:4rem;font-weight:500;color:var(--white);line-height:1;}
-.results-denom{font-size:1rem;color:var(--sage);opacity:0.55;}
-.results-tier{font-family:var(--font-serif);font-size:1.3rem;font-weight:400;color:var(--sage);margin-bottom:0.5rem;font-style:italic;}
-.results-tier-desc{font-size:0.85rem;color:var(--sage);opacity:0.8;line-height:1.65;}
-.results-body{padding:1.5rem 1.25rem 3rem;}
-.results-section-label{font-size:0.7rem;font-weight:600;letter-spacing:0.08em;text-transform:uppercase;color:var(--green-light);margin-bottom:0.875rem;}
-
-/* Radar */
-.radar-wrap{background:var(--sage-light);border:1px solid rgba(77,102,84,0.15);border-radius:var(--radius-md);padding:1rem;margin-bottom:1.5rem;display:flex;justify-content:center;}
-#results-radar{display:block;max-width:100%;}
-
-/* Dimension cards */
-.dim-result-cards{display:flex;flex-direction:column;gap:0.75rem;margin-bottom:1.75rem;}
-.dim-result-card{background:var(--white);border:1px solid var(--gray-200);border-radius:var(--radius-md);padding:1rem;}
-.dim-result-top{display:flex;justify-content:space-between;align-items:center;margin-bottom:0.6rem;}
-.dim-result-name{font-size:0.82rem;font-weight:500;color:var(--green-dark);}
-.dim-result-score{font-family:var(--font-serif);font-size:1.1rem;font-weight:500;color:var(--green-dark);}
-.dim-result-score span{font-family:var(--font-sans);font-size:0.72rem;font-weight:400;color:var(--gray-500);}
-.dim-bar-track{height:5px;background:var(--sage-light);border-radius:3px;overflow:hidden;margin-bottom:0.6rem;}
-.dim-bar-fill{height:100%;background:var(--green-light);border-radius:3px;width:0%;transition:width 0.9s ease;}
-.dim-result-note{font-size:0.78rem;color:var(--gray-500);line-height:1.55;}
-
-/* CTA */
-.cta-card{background:var(--sage);border-radius:var(--radius-md);padding:1.5rem;margin-bottom:1.25rem;}
-.cta-title{font-family:var(--font-serif);font-size:1.2rem;font-weight:500;color:var(--green-dark);margin-bottom:0.4rem;line-height:1.3;}
-.cta-body{font-size:0.82rem;color:var(--green-mid);line-height:1.7;margin-bottom:1.1rem;}
-.btn-book{display:block;width:100%;background:var(--green-dark);color:var(--sage);font-family:var(--font-serif);font-size:1rem;font-weight:500;padding:0.9rem;border-radius:var(--radius-sm);border:none;cursor:pointer;text-align:center;text-decoration:none;letter-spacing:0.01em;transition:background 0.18s,transform 0.1s;}
-.btn-book:hover{background:var(--green-mid);}
-.btn-book:active{transform:scale(0.98);}
-.btn-download{display:block;width:100%;background:transparent;color:var(--green-dark);font-family:var(--font-serif);font-size:0.9rem;font-weight:500;padding:0.8rem;border-radius:var(--radius-sm);border:1.5px solid rgba(33,53,38,0.3);cursor:pointer;text-align:center;letter-spacing:0.01em;transition:background 0.18s,transform 0.1s;margin-bottom:1.25rem;}
-.btn-download:hover{background:rgba(33,53,38,0.06);}
-.btn-download:active{transform:scale(0.98);}
-.results-footer{text-align:center;font-size:0.72rem;color:var(--gray-400);line-height:1.8;}
-.results-footer a{color:var(--green-light);text-decoration:none;}
-.retake-btn{background:none;border:none;color:var(--gray-400);font-size:0.75rem;cursor:pointer;text-decoration:underline;display:block;margin:0.75rem auto 0;font-family:var(--font-sans);}
+.res-hero{background:var(--gd);padding:2.5rem 1.5rem 2rem;}
+.res-name{font-size:0.82rem;color:var(--sage);opacity:0.75;margin-bottom:0.75rem;}
+.res-score-row{display:flex;align-items:baseline;gap:6px;margin-bottom:0.25rem;}
+.res-score{font-family:var(--serif);font-size:4rem;font-weight:500;color:var(--white);line-height:1;}
+.res-denom{font-size:1rem;color:var(--sage);opacity:0.55;}
+.res-tier{font-family:var(--serif);font-size:1.25rem;font-style:italic;color:var(--sage);margin-bottom:0.5rem;}
+.res-tier-desc{font-size:0.85rem;color:var(--sage);opacity:0.8;line-height:1.65;}
+.res-body{padding:1.5rem 1.25rem 3rem;}
+.res-section-lbl{font-size:0.7rem;font-weight:600;letter-spacing:0.08em;text-transform:uppercase;color:var(--gl);margin-bottom:0.875rem;}
+.radar-wrap{background:var(--sage2);border:1px solid rgba(77,102,84,0.15);border-radius:14px;padding:1rem;margin-bottom:1.5rem;display:flex;justify-content:center;}
+.dim-res-list{display:flex;flex-direction:column;gap:0.75rem;margin-bottom:1.75rem;}
+.dim-res-card{background:var(--white);border:1px solid var(--g200);border-radius:14px;padding:1rem;}
+.dim-res-top{display:flex;justify-content:space-between;align-items:center;margin-bottom:0.6rem;}
+.dim-res-name{font-size:0.82rem;font-weight:500;color:var(--gd);}
+.dim-res-score{font-family:var(--serif);font-size:1.1rem;font-weight:500;color:var(--gd);}
+.dim-res-score span{font-family:var(--sans);font-size:0.72rem;font-weight:400;color:var(--g500);}
+.bar-track{height:5px;background:var(--sage2);border-radius:3px;overflow:hidden;margin-bottom:0.6rem;}
+.bar-fill{height:100%;background:var(--gl);border-radius:3px;width:0%;transition:width 0.9s ease;}
+.dim-res-note{font-size:0.78rem;color:var(--g500);line-height:1.55;}
+.cta-card{background:var(--sage);border-radius:14px;padding:1.5rem;margin-bottom:1.25rem;}
+.cta-title{font-family:var(--serif);font-size:1.15rem;font-weight:500;color:var(--gd);margin-bottom:0.4rem;line-height:1.3;}
+.cta-body{font-size:0.82rem;color:var(--gm);line-height:1.7;margin-bottom:1.1rem;}
+.btn-book{display:block;width:100%;background:var(--gd);color:var(--sage);font-family:var(--serif);font-size:1rem;font-weight:500;padding:0.9rem;border-radius:8px;text-decoration:none;text-align:center;letter-spacing:0.01em;transition:background 0.18s;}
+.btn-book:hover{background:var(--gm);}
+.btn-dl{display:block;width:100%;background:transparent;color:var(--gd);font-family:var(--serif);font-size:0.9rem;font-weight:500;padding:0.8rem;border-radius:8px;border:1.5px solid rgba(33,53,38,0.3);cursor:pointer;text-align:center;letter-spacing:0.01em;margin-bottom:1.25rem;transition:background 0.18s;}
+.btn-dl:hover{background:rgba(33,53,38,0.06);}
+.res-footer{text-align:center;font-size:0.72rem;color:var(--g400);line-height:1.8;}
+.res-footer a{color:var(--gl);text-decoration:none;}
+.retake{background:none;border:none;color:var(--g400);font-size:0.75rem;cursor:pointer;text-decoration:underline;display:block;margin:0.75rem auto 0;font-family:var(--sans);}
 </style>
 </head>
 <body>
 <div id="app">
 
-<!-- ================================================
-     INTRO
-================================================ -->
+<!-- INTRO -->
 <div class="screen active" id="screen-intro">
-  <div class="intro-hero">
-    <div class="intro-logo">🌿 Guideline Talent</div>
-    <h1 class="intro-title">How much do employees actually trust you?</h1>
-    <p class="intro-subtitle">A 30-question self-assessment for experienced HR and TA professionals.</p>
+  <div class="hero">
+    <div class="logo">🌿 Guideline Talent</div>
+    <h1 class="hero-title">How much do employees actually trust you?</h1>
+    <p class="hero-sub">A 30-question self-assessment for experienced HR and TA professionals.</p>
   </div>
-  <div class="intro-body">
-    <p class="intro-desc">Trust in HR isn't built through policy or open-door statements. It's built — or eroded — through individual interactions. This assessment evaluates how you show up across three dimensions that determine whether employees come to you before a problem becomes a crisis.</p>
-    <div class="dim-cards">
-      <div class="dim-card">
-        <div class="dim-num">01</div>
-        <div class="dim-info">
+  <div class="body-pad">
+    <p class="intro-desc">Trust in HR is built or eroded through individual interactions — not policy documents or open-door statements. This assessment evaluates how you show up across the three dimensions that determine whether employees come to you before a problem becomes a crisis.</p>
+    <div class="dim-list">
+      <div class="dim-item">
+        <div class="dim-n">01</div>
+        <div>
           <div class="dim-name">Transparency &amp; Consistency</div>
-          <div class="dim-desc">Are you straight with people? Are you the same person regardless of who's in the room?</div>
+          <div class="dim-desc">Are you straight with people? Are you the same person regardless of who is in the room?</div>
         </div>
       </div>
-      <div class="dim-card">
-        <div class="dim-num">02</div>
-        <div class="dim-info">
+      <div class="dim-item">
+        <div class="dim-n">02</div>
+        <div>
           <div class="dim-name">Confidentiality &amp; Active Listening</div>
-          <div class="dim-desc">Do employees feel safe bringing you something real — and heard when they do?</div>
+          <div class="dim-desc">Do employees feel safe bringing you something real, and heard when they do?</div>
         </div>
       </div>
-      <div class="dim-card">
-        <div class="dim-num">03</div>
-        <div class="dim-info">
+      <div class="dim-item">
+        <div class="dim-n">03</div>
+        <div>
           <div class="dim-name">Competence &amp; Visibility</div>
           <div class="dim-desc">Do you know the operation? Are you present before something goes wrong?</div>
         </div>
       </div>
     </div>
-    <div class="intro-meta">
-      <span>⏱ 5 minutes</span>
-      <span>📋 30 questions</span>
-      <span>📊 Instant results</span>
+    <div class="meta-row">
+      <span>5 minutes</span>
+      <span>30 questions</span>
+      <span>Instant results</span>
     </div>
-    <button class="btn-start" onclick="startAssessment()">Begin Assessment →</button>
+    <button class="btn" id="begin-btn">Begin Assessment</button>
   </div>
 </div>
 
-<!-- ================================================
-     SECTION SCREENS (rendered dynamically)
-================================================ -->
+<!-- SECTION SCREEN -->
 <div class="screen" id="screen-section">
-  <div class="progress-header">
-    <div class="progress-top">
-      <span class="progress-section-label" id="prog-label">Area 1 of 3</span>
-      <span class="progress-count" id="prog-count">Questions 1–10</span>
+  <div class="prog-hdr">
+    <div class="prog-top">
+      <span class="prog-lbl" id="prog-lbl">Area 1 of 3</span>
+      <span class="prog-ct" id="prog-ct">Questions 1-10</span>
     </div>
-    <div class="progress-track"><div class="progress-fill" id="prog-fill" style="width:0%"></div></div>
+    <div class="prog-track"><div class="prog-bar" id="prog-bar"></div></div>
   </div>
-  <div class="section-wrap" id="section-content"></div>
+  <div class="sec-wrap" id="sec-content"></div>
 </div>
 
-<!-- ================================================
-     CAPTURE
-================================================ -->
+<!-- CAPTURE -->
 <div class="screen" id="screen-capture">
-  <div class="capture-hero">
-    <h2 class="capture-title">You're almost done.</h2>
-    <p class="capture-subtitle">Enter your information to receive your full results and a personalized report.</p>
+  <div class="cap-hero">
+    <h2 class="cap-title">You are almost done.</h2>
+    <p class="cap-sub">Enter your details to receive your full results and a personalized PDF report.</p>
   </div>
-  <div class="capture-body">
-    <div class="form-group">
-      <label class="form-label" for="field-name">First Name</label>
-      <input class="form-input" type="text" id="field-name" placeholder="Your first name" autocomplete="given-name">
-    </div>
-    <div class="form-group">
-      <label class="form-label" for="field-email">Email Address</label>
-      <input class="form-input" type="email" id="field-email" placeholder="your@email.com" autocomplete="email">
-    </div>
-    <label class="checkbox-row" for="check-session">
-      <input type="checkbox" id="check-session">
-      <span class="checkbox-label"><strong>Yes, I'd like a free 30-minute coaching session.</strong><br>Preston will reach out to schedule a conversation about your results.</span>
+  <div class="body-pad">
+    <label class="field-label" for="f-name">First Name</label>
+    <input class="field-input" type="text" id="f-name" placeholder="Your first name" autocomplete="given-name">
+    <label class="field-label" for="f-email">Email Address</label>
+    <input class="field-input" type="email" id="f-email" placeholder="your@email.com" autocomplete="email">
+    <label class="check-row" for="f-session">
+      <input type="checkbox" id="f-session">
+      <span class="check-lbl"><strong>Yes, I would like a free 30-minute coaching session.</strong><br>Preston will reach out to schedule a conversation about your results.</span>
     </label>
-    <button class="btn-submit" onclick="submitCapture()">See My Results →</button>
-    <p class="submit-error" id="submit-error">Please enter your name and a valid email address.</p>
+    <button class="btn" id="submit-btn">See My Results</button>
+    <p class="err" id="cap-err">Please enter your name and a valid email address.</p>
   </div>
 </div>
 
-<!-- ================================================
-     PROCESSING
-================================================ -->
-<div class="screen" id="processing">
+<!-- PROCESSING -->
+<div class="screen" id="screen-processing">
   <div class="spinner"></div>
-  <div class="processing-text">Generating your report…</div>
-  <div class="processing-sub">This takes just a moment.</div>
+  <div class="proc-text">Generating your report</div>
+  <div class="proc-sub">This only takes a moment.</div>
 </div>
 
-<!-- ================================================
-     RESULTS
-================================================ -->
+<!-- RESULTS -->
 <div class="screen" id="screen-results">
-  <div class="results-hero">
-    <div class="results-name" id="r-name"></div>
-    <div class="results-score-wrap">
-      <span class="results-score" id="r-score">—</span>
-      <span class="results-denom">/ 150</span>
+  <div class="res-hero">
+    <div class="res-name" id="r-name"></div>
+    <div class="res-score-row">
+      <span class="res-score" id="r-score">0</span>
+      <span class="res-denom">/ 150</span>
     </div>
-    <div class="results-tier" id="r-tier">—</div>
-    <p class="results-tier-desc" id="r-tier-desc">—</p>
+    <div class="res-tier" id="r-tier"></div>
+    <p class="res-tier-desc" id="r-tier-desc"></p>
   </div>
-  <div class="results-body">
-    <div class="results-section-label">Your dimension breakdown</div>
+  <div class="res-body">
+    <div class="res-section-lbl">Your dimension breakdown</div>
     <div class="radar-wrap">
-      <canvas id="results-radar" width="320" height="320"></canvas>
+      <canvas id="results-radar" width="300" height="300"></canvas>
     </div>
-    <div class="dim-result-cards" id="dim-result-cards"></div>
-    <button class="btn-download" onclick="downloadPDF()">⬇ Download Your Report (PDF)</button>
+    <div class="dim-res-list" id="dim-res-list"></div>
+    <button class="btn-dl" id="dl-btn">Download Your Report (PDF)</button>
     <div class="cta-card">
       <div class="cta-title">Ready to go further?</div>
-      <div class="cta-body">Your results point to specific, high-leverage shifts — not generic advice. A free 30-minute conversation with Preston can help you identify the two or three changes that would make the biggest difference in how employees experience HR and what that means for where you go next.</div>
-      <a class="btn-book" href="https://guidelinetalent-free-coaching-session.youcanbook.me" target="_blank" rel="noopener">Book a Free Coaching Session →</a>
+      <div class="cta-body">Your results point to specific high-leverage shifts, not generic advice. A free 30-minute conversation with Preston can help you identify the two or three changes that would make the biggest difference in how employees experience HR.</div>
+      <a class="btn-book" href="https://guidelinetalent-free-coaching-session.youcanbook.me" target="_blank">Book a Free Coaching Session</a>
     </div>
-    <div class="results-footer">
-      <a href="https://guidelinetalent.com" target="_blank">guidelinetalent.com</a> ·
-      <a href="https://linkedin.com/in/prestonsharpston" target="_blank">LinkedIn</a> ·
+    <div class="res-footer">
+      <a href="https://guidelinetalent.com" target="_blank">guidelinetalent.com</a> &nbsp;&#183;&nbsp;
+      <a href="https://linkedin.com/in/prestonsharpston" target="_blank">LinkedIn</a> &nbsp;&#183;&nbsp;
       <a href="https://maven.com/prestonsharpston" target="_blank">Coaching Programs</a>
     </div>
-    <button class="retake-btn" onclick="retake()">↩ Retake the assessment</button>
+    <button class="retake" id="retake-btn">Retake the assessment</button>
   </div>
 </div>
 
-</div><!-- end #app -->
-
-<!-- Hidden canvas for PDF radar -->
-<canvas id="pdf-radar" width="420" height="420" style="display:none;position:absolute;left:-9999px;top:-9999px;"></canvas>
+</div><!-- end app -->
+<canvas id="pdf-radar" width="400" height="400" style="display:none;position:absolute;left:-9999px;"></canvas>
 
 <script>
-/* ============================================================
-   DATA
-============================================================ */
-const SECTIONS = [
+// ---- DATA ----
+var SECTIONS = [
   {
-    key:'transparency',
-    label:'Area 1 of 3',
-    title:'Transparency & Consistency',
-    desc:'These questions assess how honestly and consistently you operate — and whether you hold yourself to the same standard you apply to others.',
-    qs:[
-      "When I can't share the outcome of a situation, I explain the process and who was involved instead.",
+    key: 'transparency',
+    label: 'Area 1 of 3',
+    title: 'Transparency and Consistency',
+    desc: 'These questions assess how honestly and consistently you operate and whether you hold yourself to the same standard you apply to others.',
+    qs: [
+      "When I cannot share the outcome of a situation, I explain the process and who was involved instead.",
       "I apply the same policies and standards regardless of someone's title, tenure, or proximity to leadership.",
-      "Employees can predict how I'll respond to a given situation — my approach is consistent, not reactive depending on who's asking.",
-      "When I commit to a follow-up date, I hit it — even when I have nothing new to report.",
+      "Employees can predict how I will respond to a given situation. My approach is consistent, not reactive depending on who is asking.",
+      "When I commit to a follow-up date, I hit it even when I have nothing new to report.",
       "I explain the reasoning behind the policies I enforce, not just what the policy says.",
       "When something was handled poorly or I was wrong, I say so directly rather than minimizing or moving on.",
-      "I address policy exceptions and inconsistencies when I see them, even when it's uncomfortable.",
+      "I address policy exceptions and inconsistencies when I see them, even when it is uncomfortable.",
       "I am the same person in a conversation with a senior leader as I am with a frontline employee.",
-      "Employees don't leave conversations with HR wondering what comes next — I always close the loop.",
+      "Employees do not leave conversations with HR wondering what comes next. I always close the loop.",
       "The explanations I give for HR decisions hold up when employees look into them independently."
     ]
   },
   {
-    key:'confidentiality',
-    label:'Area 2 of 3',
-    title:'Confidentiality & Active Listening',
-    desc:'These questions assess what employees experience when they bring something sensitive to HR — and whether they leave those conversations feeling genuinely heard.',
-    qs:[
-      "I set clear parameters about what I can and cannot keep confidential before an employee shares — not after.",
-      "I never promise confidentiality I'm not actually able to keep.",
+    key: 'confidentiality',
+    label: 'Area 2 of 3',
+    title: 'Confidentiality and Active Listening',
+    desc: 'These questions assess what employees experience when they bring something sensitive to HR and whether they leave those conversations feeling genuinely heard.',
+    qs: [
+      "I set clear parameters about what I can and cannot keep confidential before an employee shares, not after.",
+      "I never promise confidentiality I am not actually able to keep.",
       "When an employee comes to me with a concern, I listen fully before reaching for policy, process, or resolution.",
-      "I reflect back what I heard before I respond, to verify I understood before I react.",
-      "I ask employees what outcome they're hoping for before I offer what I think the answer is.",
-      "Employees leave sensitive conversations knowing exactly what I'm going to do, what I need from them, and when they'll hear from me.",
-      "I am confident that nothing shared with me in confidence has reached someone it shouldn't have.",
+      "I reflect back what I heard before I respond to verify I understood before I react.",
+      "I ask employees what outcome they are hoping for before I offer what I think the answer is.",
+      "Employees leave sensitive conversations knowing exactly what I am going to do, what I need from them, and when they will hear from me.",
+      "I am confident that nothing shared with me in confidence has reached someone it should not have.",
       "When an employee seems to be holding something back, I create space for them rather than moving past it.",
-      "I approach sensitive conversations as a person I'm trying to help, not a situation I'm managing.",
-      "The way I take notes or document during conversations doesn't make employees feel processed rather than heard."
+      "I approach sensitive conversations as a person I am trying to help, not a situation I am managing.",
+      "The way I take notes during conversations does not make employees feel processed rather than heard."
     ]
   },
   {
-    key:'competence',
-    label:'Area 3 of 3',
-    title:'Competence & Visibility',
-    desc:'These questions assess whether employees see you as an operationally credible partner — and whether you're present in their world before something goes wrong.',
-    qs:[
+    key: 'competence',
+    label: 'Area 3 of 3',
+    title: 'Competence and Visibility',
+    desc: 'These questions assess whether employees see you as an operationally credible partner and whether you are present in their world before something goes wrong.',
+    qs: [
       "I have a working understanding of what the day-to-day jobs of the people I support actually involve.",
       "Employees across the organization know who I am before they need me for something.",
       "I am visible in parts of the organization outside of HR-specific situations.",
-      "I deliver good news directly and in person — not just bad news.",
+      "I deliver good news directly and in person, not just bad news.",
       "I have intentional informal touchpoints with teams I support that carry no HR agenda.",
-      "When I write policies or make recommendations, they reflect how the operation actually works — not just how I think it should.",
-      "Leaders in my organization bring HR into people decisions before they've already been made.",
-      "When I don't know an answer, I say so specifically, commit to a follow-up time, and hit it.",
-      "I follow up with employees on personal things they've shared with me outside of formal HR conversations.",
+      "When I write policies or make recommendations, they reflect how the operation actually works, not just how I think it should.",
+      "Leaders in my organization bring HR into people decisions before they have already been made.",
+      "When I do not know an answer, I say so specifically, commit to a follow-up time, and hit it.",
+      "I follow up with employees on personal things they have shared with me outside of formal HR conversations.",
       "The most recent interaction someone in my organization had with HR was not a disciplinary, investigative, or compliance conversation."
     ]
   }
 ];
 
-const TIERS = [
-  {min:130,label:'Trust Leader',
-   desc:"You're modeling trust-based HR practice consistently across all three dimensions. Your next challenge is making your approach visible and repeatable — so it influences how others on your team operate, not just how you personally show up."},
-  {min:105,label:'Trusted Partner',
-   desc:"You've built real credibility, and employees likely experience you as a reliable, straight-dealing presence. A few targeted shifts — particularly in the areas where your scores dip — would close the gap between good and exceptional."},
-  {min:75,label:'Developing Credibility',
-   desc:"You have a solid foundation. You're likely doing more right than you give yourself credit for — and carrying a few habits that are quietly costing you more than you realize. Your dimension scores will point to where."},
-  {min:0,label:'Building Foundation',
-   desc:"You're earlier in this journey than most would admit — which puts you ahead of most. The fact that you're assessing yourself honestly is not a small thing. Use the dimension breakdown as a specific, actionable roadmap."}
+var TIERS = [
+  { min: 130, label: 'Trust Leader', desc: 'You are modeling trust-based HR practice consistently across all three dimensions. Your next challenge is making your approach visible and repeatable so it influences how others on your team operate, not just how you personally show up.' },
+  { min: 105, label: 'Trusted Partner', desc: 'You have built real credibility, and employees likely experience you as a reliable, straight-dealing presence. A few targeted shifts, particularly in the areas where your scores dip, would close the gap between good and exceptional.' },
+  { min: 75,  label: 'Developing Credibility', desc: 'You have a solid foundation. You are likely doing more right than you give yourself credit for and also carrying a few habits that are quietly costing you more than you realize. Your dimension scores will point to where.' },
+  { min: 0,   label: 'Building Foundation', desc: 'You are earlier in this journey than most would admit, which puts you ahead of most. The fact that you are assessing yourself honestly is not a small thing. Use the dimension breakdown as a specific, actionable roadmap.' }
 ];
 
-const DIM_NOTES = {
-  transparency:[
-    {max:24,note:"Transparency and consistency likely have the most visible impact on whether employees come to you proactively. Establishing predictable follow-up practices and explaining the 'why' behind decisions are the highest-leverage entry points."},
-    {max:37,note:"You're holding the line more often than not. The gaps tend to be situational — by title, relationship, or urgency. Worth examining whether your approach shifts when senior stakeholders are involved."},
-    {max:50,note:"Transparency and consistency are genuine strengths. Employees likely describe you as predictable in the best sense — which is one of the most valuable reputations an HR professional can build."}
+var DIM_NOTES = {
+  transparency: [
+    { max: 24, note: 'Transparency and consistency likely have the most visible impact on whether employees come to you proactively. Establishing predictable follow-up practices and explaining the why behind decisions are the highest-leverage entry points.' },
+    { max: 37, note: 'You are holding the line more often than not. The gaps tend to be situational by title, relationship, or urgency. Worth examining whether your approach shifts when senior stakeholders are involved.' },
+    { max: 50, note: 'Transparency and consistency are genuine strengths. Employees likely describe you as predictable in the best sense, which is one of the most valuable reputations an HR professional can build.' }
   ],
-  confidentiality:[
-    {max:24,note:"Sensitive conversations are likely where trust is breaking down most visibly. Setting confidentiality expectations before someone shares — not after — is the single highest-leverage change available here."},
-    {max:37,note:"You're doing the fundamentals well. The refinement is in the margins: how conversations end, whether employees leave with a clear next step, and how you create space when something feels withheld."},
-    {max:50,note:"Employees feel heard when they come to you. This takes longer to build than most people realize — and is easier to lose than you'd expect. Protect the habits that created it."}
+  confidentiality: [
+    { max: 24, note: 'Sensitive conversations are likely where trust is breaking down most visibly. Setting confidentiality expectations before someone shares, not after, is the single highest-leverage change available here.' },
+    { max: 37, note: 'You are doing the fundamentals well. The refinement is in the margins: how conversations end, whether employees leave with a clear next step, and how you create space when something feels withheld.' },
+    { max: 50, note: 'Employees feel heard when they come to you. This takes longer to build than most people realize and is easier to lose than you would expect. Protect the habits that created it.' }
   ],
-  competence:[
-    {max:24,note:"Visibility and operational credibility are likely where your trust gap is widest. One intentional no-agenda visit per week, done consistently over 30 days, will shift your reputation in a department more than most other actions combined."},
-    {max:37,note:"You're known and generally credible, but probably more reactive than proactive in most departments. The gap is usually in the informal touchpoints — showing up when nothing is wrong."},
-    {max:50,note:"You've built real operational credibility and a visible presence. Leaders are more likely to include you early, and employees are more likely to surface issues before they escalate."}
+  competence: [
+    { max: 24, note: 'Visibility and operational credibility are likely where your trust gap is widest. One intentional no-agenda visit per week done consistently over 30 days will shift your reputation in a department more than most other actions combined.' },
+    { max: 37, note: 'You are known and generally credible but probably more reactive than proactive in most departments. The gap is usually in the informal touchpoints, showing up when nothing is wrong.' },
+    { max: 50, note: 'You have built real operational credibility and a visible presence. Leaders are more likely to include you early, and employees are more likely to surface issues before they escalate.' }
   ]
 };
 
-/* ============================================================
-   STATE
-============================================================ */
-const answers = {};
-let curSection = 0;
-let userName = '';
-let userEmail = '';
-let sessionRequest = false;
-let lastScores = null;
-let lastTotal = 0;
-let lastTier = null;
+// ---- STATE ----
+var answers = {};
+var curSection = 0;
+var userName = '';
+var userEmail = '';
+var sessionReq = false;
+var savedScores = null;
+var savedTotal = 0;
+var savedTier = null;
 
-/* ============================================================
-   SCREEN MANAGEMENT
-============================================================ */
+// ---- SCREENS ----
 function showScreen(id) {
-  document.querySelectorAll('.screen').forEach(s => s.classList.remove('active'));
-  const el = document.getElementById(id);
-  if (el) el.classList.add('active');
-  window.scrollTo({top:0,behavior:'instant'});
+  var all = document.querySelectorAll('.screen');
+  for (var i = 0; i < all.length; i++) {
+    all[i].classList.remove('active');
+  }
+  var target = document.getElementById(id);
+  if (target) {
+    target.classList.add('active');
+  }
+  window.scrollTo(0, 0);
 }
 
-/* ============================================================
-   ASSESSMENT FLOW
-============================================================ */
-function startAssessment() {
-  curSection = 0;
-  renderSection(0);
-  showScreen('screen-section');
-}
-
+// ---- SECTION RENDER ----
 function renderSection(idx) {
-  const sec = SECTIONS[idx];
-  const startQ = idx * 10;
-  const pct = Math.round((idx / 3) * 100);
+  var sec = SECTIONS[idx];
+  var startQ = idx * 10;
+  var pct = Math.round((idx / 3) * 100);
+  var labels = ['Never', 'Rarely', 'Sometimes', 'Often', 'Always'];
 
-  document.getElementById('prog-label').textContent = sec.label;
-  document.getElementById('prog-count').textContent = 'Questions ' + (startQ+1) + '–' + (startQ+10);
-  document.getElementById('prog-fill').style.width = pct + '%';
+  document.getElementById('prog-lbl').textContent = sec.label;
+  document.getElementById('prog-ct').textContent = 'Questions ' + (startQ + 1) + '-' + (startQ + 10);
+  document.getElementById('prog-bar').style.width = pct + '%';
 
-  const labels = ['Never','Rarely','Sometimes','Often','Always'];
-  let html = '<div class="section-header">'
-    + '<span class="section-badge">' + sec.label + '</span>'
-    + '<h2 class="section-title">' + sec.title + '</h2>'
-    + '<p class="section-desc">' + sec.desc + '</p>'
-    + '</div>';
+  var html = '';
+  html += '<span class="sec-badge">' + sec.label + '</span>';
+  html += '<h2 class="sec-title">' + sec.title + '</h2>';
+  html += '<p class="sec-desc">' + sec.desc + '</p>';
 
-  sec.qs.forEach(function(q, qi) {
-    const qIdx = startQ + qi;
-    const key = 'q' + qIdx;
-    const done = answers[key] !== undefined;
-    html += '<div class="q-card' + (done ? ' answered' : '') + '" id="card-' + key + '">'
-      + '<div class="q-number">Question ' + (qIdx+1) + '</div>'
-      + '<div class="q-text">' + q + '</div>'
-      + '<div class="rating-row">';
-    for (let v = 1; v <= 5; v++) {
-      html += '<label class="r-option">'
-        + '<input type="radio" name="' + key + '" value="' + v + '"'
-        + (answers[key] === v ? ' checked' : '')
-        + ' onchange="recordAnswer(\'' + key + '\',' + v + ')">'
-        + '<div class="r-circle">' + v + '</div>'
-        + '<span class="r-label">' + labels[v-1] + '</span>'
-        + '</label>';
+  for (var qi = 0; qi < sec.qs.length; qi++) {
+    var qIdx = startQ + qi;
+    var key = 'q' + qIdx;
+    var isDone = answers[key] !== undefined;
+    html += '<div class="q-card' + (isDone ? ' done' : '') + '" id="card-' + key + '">';
+    html += '<div class="q-num">Question ' + (qIdx + 1) + '</div>';
+    html += '<div class="q-text">' + sec.qs[qi] + '</div>';
+    html += '<div class="rating-row">';
+    for (var v = 1; v <= 5; v++) {
+      var checked = answers[key] === v ? ' checked' : '';
+      html += '<label class="r-opt">';
+      html += '<input type="radio" name="' + key + '" value="' + v + '"' + checked + ' onchange="recordAnswer(\'' + key + '\',' + v + ')">';
+      html += '<div class="r-circle">' + v + '</div>';
+      html += '<span class="r-lbl">' + labels[v - 1] + '</span>';
+      html += '</label>';
     }
     html += '</div></div>';
-  });
+  }
 
-  const isLast = idx === SECTIONS.length - 1;
-  html += '<div class="q-nav">'
-    + '<button class="btn-next" onclick="' + (isLast ? 'goToCapture' : 'nextSection') + '()">'
-    + (isLast ? 'Continue →' : 'Next Section →')
-    + '</button>'
-    + (idx > 0 ? '<button class="btn-back" onclick="prevSection()">← Back</button>' : '')
-    + '</div>'
-    + '<p class="validation-error" id="val-err">Please answer all 10 questions before continuing.</p>';
+  html += '<div class="btn-row">';
+  if (idx === SECTIONS.length - 1) {
+    html += '<button class="btn" onclick="goToCapture()">Continue</button>';
+  } else {
+    html += '<button class="btn" onclick="nextSection()">Next Section</button>';
+  }
+  if (idx > 0) {
+    html += '<button class="btn-outline" onclick="prevSection()">Back</button>';
+  }
+  html += '</div>';
+  html += '<p class="err" id="sec-err">Please answer all 10 questions before continuing.</p>';
 
-  document.getElementById('section-content').innerHTML = html;
+  document.getElementById('sec-content').innerHTML = html;
 }
 
 function recordAnswer(key, val) {
-  answers[key] = val;
-  const card = document.getElementById('card-' + key);
-  if (card) card.classList.add('answered');
-  const err = document.getElementById('val-err');
+  answers[key] = parseInt(val);
+  var card = document.getElementById('card-' + key);
+  if (card) card.classList.add('done');
+  var err = document.getElementById('sec-err');
   if (err) err.classList.remove('show');
 }
 
-function sectionComplete() {
-  const start = curSection * 10;
-  for (let i = start; i < start + 10; i++) {
-    if (answers['q'+i] === undefined) return false;
+function sectionDone() {
+  var start = curSection * 10;
+  for (var i = start; i < start + 10; i++) {
+    if (answers['q' + i] === undefined) return false;
   }
   return true;
 }
 
 function nextSection() {
-  if (!sectionComplete()) {
-    document.getElementById('val-err').classList.add('show');
-    const firstUnanswered = document.querySelector('.q-card:not(.answered)');
-    if (firstUnanswered) firstUnanswered.scrollIntoView({behavior:'smooth',block:'center'});
+  if (!sectionDone()) {
+    document.getElementById('sec-err').classList.add('show');
+    var first = document.querySelector('.q-card:not(.done)');
+    if (first) first.scrollIntoView({ behavior: 'smooth', block: 'center' });
     return;
   }
   curSection++;
   renderSection(curSection);
+  window.scrollTo(0, 0);
 }
 
 function prevSection() {
   curSection--;
   renderSection(curSection);
+  window.scrollTo(0, 0);
 }
 
 function goToCapture() {
-  if (!sectionComplete()) {
-    document.getElementById('val-err').classList.add('show');
-    const firstUnanswered = document.querySelector('.q-card:not(.answered)');
-    if (firstUnanswered) firstUnanswered.scrollIntoView({behavior:'smooth',block:'center'});
+  if (!sectionDone()) {
+    document.getElementById('sec-err').classList.add('show');
+    var first = document.querySelector('.q-card:not(.done)');
+    if (first) first.scrollIntoView({ behavior: 'smooth', block: 'center' });
     return;
   }
   showScreen('screen-capture');
 }
 
-/* ============================================================
-   CAPTURE + SUBMIT
-============================================================ */
+// ---- CAPTURE ----
 function submitCapture() {
-  const nameVal = document.getElementById('field-name').value.trim();
-  const emailVal = document.getElementById('field-email').value.trim();
-  const emailOk = /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(emailVal);
-
+  var nameVal = document.getElementById('f-name').value.trim();
+  var emailVal = document.getElementById('f-email').value.trim();
+  var emailOk = /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(emailVal);
   if (!nameVal || !emailOk) {
-    document.getElementById('submit-error').classList.add('show');
+    document.getElementById('cap-err').classList.add('show');
     return;
   }
-
   userName = nameVal;
   userEmail = emailVal;
-  sessionRequest = document.getElementById('check-session').checked;
-
-  showScreen('processing');
-
-  // Calculate scores
-  const scores = {transparency:0, confidentiality:0, competence:0};
-  for (let i = 0; i < 10; i++) scores.transparency += answers['q'+i] || 0;
-  for (let i = 10; i < 20; i++) scores.confidentiality += answers['q'+i] || 0;
-  for (let i = 20; i < 30; i++) scores.competence += answers['q'+i] || 0;
-  const total = scores.transparency + scores.confidentiality + scores.competence;
-  const tier = TIERS.find(function(t){ return total >= t.min; });
-
-  lastScores = scores;
-  lastTotal = total;
-  lastTier = tier;
-
-  // Draw PDF radar on hidden canvas, generate PDF, then send to API
-  drawRadarOnCanvas('pdf-radar', scores, true, function() {
-    const pdfBase64 = generatePDF(userName, scores, total, tier);
-    sendToAPI(userName, userEmail, scores, total, tier, sessionRequest, pdfBase64)
-      .finally(function() {
-        showResults(scores, total, tier);
-      });
-  });
+  sessionReq = document.getElementById('f-session').checked;
+  showScreen('screen-processing');
+  setTimeout(function() { processResults(); }, 800);
 }
 
-/* ============================================================
-   RESULTS
-============================================================ */
+// ---- SCORING ----
+function processResults() {
+  var scores = { transparency: 0, confidentiality: 0, competence: 0 };
+  for (var i = 0; i < 10; i++) scores.transparency += answers['q' + i] || 0;
+  for (var i = 10; i < 20; i++) scores.confidentiality += answers['q' + i] || 0;
+  for (var i = 20; i < 30; i++) scores.competence += answers['q' + i] || 0;
+  var total = scores.transparency + scores.confidentiality + scores.competence;
+  var tier = TIERS[TIERS.length - 1];
+  for (var t = 0; t < TIERS.length; t++) {
+    if (total >= TIERS[t].min) { tier = TIERS[t]; break; }
+  }
+  savedScores = scores;
+  savedTotal = total;
+  savedTier = tier;
+
+  // Try to send to API - non-blocking
+  sendToAPI(userName, userEmail, scores, total, tier, sessionReq);
+
+  showResults(scores, total, tier);
+}
+
+// ---- RESULTS ----
 function showResults(scores, total, tier) {
   document.getElementById('r-name').textContent = 'Results for ' + userName;
   document.getElementById('r-score').textContent = total;
   document.getElementById('r-tier').textContent = tier.label;
   document.getElementById('r-tier-desc').textContent = tier.desc;
-  document.getElementById('prog-fill').style.width = '100%';
+  document.getElementById('prog-bar').style.width = '100%';
 
-  const dims = [
-    {key:'transparency',  label:'Transparency & Consistency',        score:scores.transparency},
-    {key:'confidentiality',label:'Confidentiality & Active Listening',score:scores.confidentiality},
-    {key:'competence',    label:'Competence & Visibility',           score:scores.competence}
+  var dims = [
+    { key: 'transparency',    label: 'Transparency and Consistency',        score: scores.transparency   },
+    { key: 'confidentiality', label: 'Confidentiality and Active Listening', score: scores.confidentiality },
+    { key: 'competence',      label: 'Competence and Visibility',            score: scores.competence     }
   ];
 
-  let html = '';
-  dims.forEach(function(d) {
-    const notes = DIM_NOTES[d.key];
-    const note = notes.find(function(n){ return d.score <= n.max; }) || notes[notes.length-1];
-    html += '<div class="dim-result-card">'
-      + '<div class="dim-result-top">'
-      + '<div class="dim-result-name">' + d.label + '</div>'
-      + '<div class="dim-result-score">' + d.score + '<span> / 50</span></div>'
-      + '</div>'
-      + '<div class="dim-bar-track"><div class="dim-bar-fill" id="bar-' + d.key + '"></div></div>'
-      + '<div class="dim-result-note">' + note.note + '</div>'
-      + '</div>';
-  });
-  document.getElementById('dim-result-cards').innerHTML = html;
+  var html = '';
+  for (var i = 0; i < dims.length; i++) {
+    var d = dims[i];
+    var notes = DIM_NOTES[d.key];
+    var note = notes[notes.length - 1];
+    for (var n = 0; n < notes.length; n++) {
+      if (d.score <= notes[n].max) { note = notes[n]; break; }
+    }
+    html += '<div class="dim-res-card">';
+    html += '<div class="dim-res-top">';
+    html += '<div class="dim-res-name">' + d.label + '</div>';
+    html += '<div class="dim-res-score">' + d.score + '<span> / 50</span></div>';
+    html += '</div>';
+    html += '<div class="bar-track"><div class="bar-fill" id="bar-' + d.key + '"></div></div>';
+    html += '<div class="dim-res-note">' + note.note + '</div>';
+    html += '</div>';
+  }
+  document.getElementById('dim-res-list').innerHTML = html;
 
   showScreen('screen-results');
 
-  // Animate bars after paint
-  requestAnimationFrame(function() {
-    dims.forEach(function(d) {
-      const bar = document.getElementById('bar-' + d.key);
-      if (bar) bar.style.width = Math.round((d.score/50)*100) + '%';
-    });
-    // Draw visible radar
-    drawRadarOnCanvas('results-radar', scores, false, function(){});
-  });
+  setTimeout(function() {
+    for (var i = 0; i < dims.length; i++) {
+      var bar = document.getElementById('bar-' + dims[i].key);
+      if (bar) bar.style.width = Math.round((dims[i].score / 50) * 100) + '%';
+    }
+    drawRadar('results-radar', scores, false);
+    drawRadar('pdf-radar', scores, true);
+  }, 100);
 }
 
-/* ============================================================
-   RADAR CHART
-============================================================ */
-function drawRadarOnCanvas(canvasId, scores, forPDF, callback) {
-  const canvas = document.getElementById(canvasId);
-  if (!canvas) { callback(); return; }
-  const ctx = canvas.getContext('2d');
-  const W = canvas.width;
-  const H = canvas.height;
-  const cx = W / 2;
-  const cy = H / 2 + (forPDF ? 10 : 5);
-  const r = Math.min(W, H) * (forPDF ? 0.32 : 0.31);
+// ---- RADAR CHART ----
+function drawRadar(canvasId, scores, large) {
+  var canvas = document.getElementById(canvasId);
+  if (!canvas) return;
+  var ctx = canvas.getContext('2d');
+  var W = canvas.width;
+  var H = canvas.height;
+  var cx = W / 2;
+  var cy = H / 2 + 8;
+  var r = Math.min(W, H) * 0.3;
+  var angles = [-Math.PI / 2, -Math.PI / 2 + (2 * Math.PI / 3), -Math.PI / 2 + (4 * Math.PI / 3)];
+  var vals = [scores.transparency, scores.confidentiality, scores.competence];
 
   ctx.clearRect(0, 0, W, H);
 
-  // 3 axes: top (transparency), bottom-right (confidentiality), bottom-left (competence)
-  const angles = [-Math.PI/2, -Math.PI/2 + (2*Math.PI/3), -Math.PI/2 + (4*Math.PI/3)];
-  const vals = [scores.transparency, scores.confidentiality, scores.competence];
-  const maxVal = 50;
-  const levels = 5;
-
-  // Background rings
-  for (let lv = levels; lv >= 1; lv--) {
-    const lR = (r * lv) / levels;
+  for (var lv = 5; lv >= 1; lv--) {
+    var lR = (r * lv) / 5;
     ctx.beginPath();
-    angles.forEach(function(a, i) {
-      const x = cx + lR * Math.cos(a);
-      const y = cy + lR * Math.sin(a);
-      if (i === 0) ctx.moveTo(x, y); else ctx.lineTo(x, y);
-    });
+    for (var ai = 0; ai < angles.length; ai++) {
+      var x = cx + lR * Math.cos(angles[ai]);
+      var y = cy + lR * Math.sin(angles[ai]);
+      if (ai === 0) ctx.moveTo(x, y); else ctx.lineTo(x, y);
+    }
     ctx.closePath();
-    ctx.fillStyle = lv === levels ? 'rgba(230,239,205,0.5)' : 'rgba(230,239,205,0.25)';
+    ctx.fillStyle = lv === 5 ? 'rgba(230,239,205,0.5)' : 'rgba(230,239,205,0.25)';
     ctx.fill();
     ctx.strokeStyle = 'rgba(77,102,84,0.2)';
     ctx.lineWidth = 0.75;
     ctx.stroke();
   }
 
-  // Axis lines
-  angles.forEach(function(a) {
+  for (var ai = 0; ai < angles.length; ai++) {
     ctx.beginPath();
     ctx.moveTo(cx, cy);
-    ctx.lineTo(cx + r * Math.cos(a), cy + r * Math.sin(a));
+    ctx.lineTo(cx + r * Math.cos(angles[ai]), cy + r * Math.sin(angles[ai]));
     ctx.strokeStyle = 'rgba(77,102,84,0.25)';
     ctx.lineWidth = 0.75;
     ctx.stroke();
-  });
+  }
 
-  // Data polygon
   ctx.beginPath();
-  angles.forEach(function(a, i) {
-    const ratio = vals[i] / maxVal;
-    const x = cx + r * ratio * Math.cos(a);
-    const y = cy + r * ratio * Math.sin(a);
-    if (i === 0) ctx.moveTo(x, y); else ctx.lineTo(x, y);
-  });
+  for (var ai = 0; ai < angles.length; ai++) {
+    var ratio = vals[ai] / 50;
+    var x = cx + r * ratio * Math.cos(angles[ai]);
+    var y = cy + r * ratio * Math.sin(angles[ai]);
+    if (ai === 0) ctx.moveTo(x, y); else ctx.lineTo(x, y);
+  }
   ctx.closePath();
   ctx.fillStyle = 'rgba(33,53,38,0.25)';
   ctx.fill();
@@ -637,299 +582,257 @@ function drawRadarOnCanvas(canvasId, scores, forPDF, callback) {
   ctx.lineWidth = 2;
   ctx.stroke();
 
-  // Data points
-  angles.forEach(function(a, i) {
-    const ratio = vals[i] / maxVal;
-    const x = cx + r * ratio * Math.cos(a);
-    const y = cy + r * ratio * Math.sin(a);
+  for (var ai = 0; ai < angles.length; ai++) {
+    var ratio = vals[ai] / 50;
+    var px = cx + r * ratio * Math.cos(angles[ai]);
+    var py = cy + r * ratio * Math.sin(angles[ai]);
     ctx.beginPath();
-    ctx.arc(x, y, forPDF ? 6 : 5, 0, Math.PI * 2);
+    ctx.arc(px, py, 5, 0, Math.PI * 2);
     ctx.fillStyle = '#213526';
     ctx.fill();
-  });
+  }
 
-  // Labels
-  const labels = ['Transparency\n& Consistency', 'Confidentiality\n& Listening', 'Competence\n& Visibility'];
-  const labelR = r + (forPDF ? 52 : 44);
-  ctx.font = (forPDF ? '11px' : '10px') + " 'Inter', sans-serif";
+  var lbls = ['Transparency\n& Consistency', 'Confidentiality\n& Listening', 'Competence\n& Visibility'];
+  var lR2 = r + (large ? 52 : 40);
+  var fs = large ? 11 : 10;
+  ctx.font = fs + "px 'Inter',sans-serif";
   ctx.fillStyle = '#213526';
   ctx.textAlign = 'center';
   ctx.textBaseline = 'middle';
-
-  angles.forEach(function(a, i) {
-    const lx = cx + labelR * Math.cos(a);
-    const ly = cy + labelR * Math.sin(a);
-    const parts = labels[i].split('\n');
-    const lineH = forPDF ? 15 : 13;
-    const offset = -((parts.length - 1) * lineH) / 2;
-    parts.forEach(function(p, pi) {
-      ctx.fillText(p, lx, ly + offset + pi * lineH);
-    });
-  });
-
-  // Score labels on points
-  ctx.font = (forPDF ? '12px' : '10px') + " 'Fraunces', Georgia, serif";
-  ctx.fillStyle = '#213526';
-  angles.forEach(function(a, i) {
-    const ratio = vals[i] / maxVal;
-    const px = cx + r * ratio * Math.cos(a);
-    const py = cy + r * ratio * Math.sin(a);
-    const ox = Math.cos(a) * (forPDF ? 18 : 15);
-    const oy = Math.sin(a) * (forPDF ? 18 : 15);
-    ctx.fillText(String(vals[i]), px + ox, py + oy);
-  });
-
-  callback();
+  for (var ai = 0; ai < angles.length; ai++) {
+    var lx = cx + lR2 * Math.cos(angles[ai]);
+    var ly = cy + lR2 * Math.sin(angles[ai]);
+    var parts = lbls[ai].split('\n');
+    var lh = fs + 3;
+    var off = -((parts.length - 1) * lh) / 2;
+    for (var pi = 0; pi < parts.length; pi++) {
+      ctx.fillText(parts[pi], lx, ly + off + pi * lh);
+    }
+  }
 }
 
-/* ============================================================
-   PDF GENERATION
-============================================================ */
-function generatePDF(name, scores, total, tier) {
-  if (typeof window.jspdf === 'undefined') return null;
-  const { jsPDF } = window.jspdf;
-  const doc = new jsPDF({ orientation:'portrait', unit:'mm', format:'a4' });
-  const pw = 210;
-  const ph = 297;
+// ---- PDF DOWNLOAD ----
+function downloadPDF() {
+  if (!savedScores || !savedTier) return;
+  if (typeof window.jspdf === 'undefined') {
+    alert('PDF is loading, please try again in a moment.');
+    return;
+  }
+  var jsPDF = window.jspdf.jsPDF;
+  var doc = new jsPDF({ orientation: 'portrait', unit: 'mm', format: 'a4' });
+  var pw = 210;
+  var ph = 297;
 
-  // ---- PAGE 1: COVER ----
-  // Dark green background
+  // Page 1 - Cover
   doc.setFillColor(33, 53, 38);
   doc.rect(0, 0, pw, ph, 'F');
-
-  // Logo
   doc.setTextColor(197, 217, 176);
   doc.setFontSize(10);
-  doc.setFont('helvetica','normal');
-  doc.text('🌿 Guideline Talent', 20, 22);
-
-  // Title
+  doc.setFont('helvetica', 'normal');
+  doc.text('Guideline Talent', 20, 22);
   doc.setTextColor(230, 239, 205);
   doc.setFontSize(28);
-  doc.setFont('helvetica','bold');
+  doc.setFont('helvetica', 'bold');
   doc.text('HR Trust', 20, 55);
   doc.text('Assessment', 20, 68);
-
-  // Name
   doc.setFontSize(13);
-  doc.setFont('helvetica','normal');
+  doc.setFont('helvetica', 'normal');
   doc.setTextColor(197, 217, 176);
-  doc.text('Results for ' + name, 20, 90);
-
-  // Score
+  doc.text('Results for ' + userName, 20, 90);
   doc.setFontSize(72);
-  doc.setFont('helvetica','bold');
+  doc.setFont('helvetica', 'bold');
   doc.setTextColor(230, 239, 205);
-  doc.text(String(total), 20, 145);
+  doc.text(String(savedTotal), 20, 145);
   doc.setFontSize(18);
-  doc.setFont('helvetica','normal');
+  doc.setFont('helvetica', 'normal');
   doc.setTextColor(197, 217, 176);
   doc.text('out of 150', 20, 158);
-
-  // Tier
   doc.setFontSize(22);
-  doc.setFont('helvetica','bolditalic');
+  doc.setFont('helvetica', 'bolditalic');
   doc.setTextColor(230, 239, 205);
-  doc.text(tier.label, 20, 178);
-
-  // Tier desc
+  doc.text(savedTier.label, 20, 178);
   doc.setFontSize(10);
-  doc.setFont('helvetica','normal');
+  doc.setFont('helvetica', 'normal');
   doc.setTextColor(197, 217, 176);
-  var tierLines = doc.splitTextToSize(tier.desc, pw - 40);
-  doc.text(tierLines, 20, 192);
-
-  // Date
+  var tdLines = doc.splitTextToSize(savedTier.desc, pw - 40);
+  doc.text(tdLines, 20, 192);
   doc.setFontSize(9);
   doc.setTextColor(130, 160, 130);
-  doc.text(new Date().toLocaleDateString('en-US',{year:'numeric',month:'long',day:'numeric'}), 20, ph - 20);
-  doc.text('guidelinetalent.com', pw - 20, ph - 20, {align:'right'});
+  doc.text(new Date().toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' }), 20, ph - 20);
+  doc.text('guidelinetalent.com', pw - 20, ph - 20, { align: 'right' });
 
-  // ---- PAGE 2: RADAR + SCORES ----
+  // Page 2 - Chart + Scores
   doc.addPage();
   doc.setFillColor(242, 247, 232);
   doc.rect(0, 0, pw, ph, 'F');
-
-  // Header bar
   doc.setFillColor(33, 53, 38);
   doc.rect(0, 0, pw, 18, 'F');
   doc.setTextColor(230, 239, 205);
   doc.setFontSize(10);
-  doc.setFont('helvetica','bold');
+  doc.setFont('helvetica', 'bold');
   doc.text('DIMENSION BREAKDOWN', 20, 12);
-  doc.setFont('helvetica','normal');
-  doc.text(name + ' · ' + String(total) + ' / 150', pw - 20, 12, {align:'right'});
+  doc.setFont('helvetica', 'normal');
+  doc.text(userName + '   ' + savedTotal + ' / 150', pw - 20, 12, { align: 'right' });
 
-  // Radar chart image
-  const pdfCanvas = document.getElementById('pdf-radar');
+  var pdfCanvas = document.getElementById('pdf-radar');
   if (pdfCanvas) {
-    const imgData = pdfCanvas.toDataURL('image/png');
-    doc.addImage(imgData, 'PNG', 25, 25, 160, 160);
+    var img = pdfCanvas.toDataURL('image/png');
+    doc.addImage(img, 'PNG', 25, 25, 160, 160);
   }
 
-  // Dimension score bars
-  const dims = [
-    {key:'transparency',  label:'Transparency & Consistency',        score:scores.transparency},
-    {key:'confidentiality',label:'Confidentiality & Active Listening',score:scores.confidentiality},
-    {key:'competence',    label:'Competence & Visibility',           score:scores.competence}
+  var dims = [
+    { key: 'transparency',    label: 'Transparency and Consistency',        score: savedScores.transparency   },
+    { key: 'confidentiality', label: 'Confidentiality and Active Listening', score: savedScores.confidentiality },
+    { key: 'competence',      label: 'Competence and Visibility',            score: savedScores.competence     }
   ];
-  let barY = 200;
-  dims.forEach(function(d) {
-    const pct = d.score / 50;
-    const barW = 140;
-
-    doc.setFont('helvetica','bold');
+  var barY = 200;
+  for (var di = 0; di < dims.length; di++) {
+    var d = dims[di];
+    var pct = d.score / 50;
+    doc.setFont('helvetica', 'bold');
     doc.setFontSize(10);
     doc.setTextColor(33, 53, 38);
     doc.text(d.label, 20, barY);
-    doc.setFont('helvetica','normal');
-    doc.text(d.score + ' / 50', pw - 20, barY, {align:'right'});
-
-    // Bar track
+    doc.text(d.score + ' / 50', pw - 20, barY, { align: 'right' });
     doc.setFillColor(197, 217, 176);
-    doc.roundedRect(20, barY + 3, barW, 5, 2, 2, 'F');
-    // Bar fill
-    doc.setFillColor(77, 102, 84);
-    if (pct > 0) doc.roundedRect(20, barY + 3, barW * pct, 5, 2, 2, 'F');
-
-    // Note
-    const notes = DIM_NOTES[d.key];
-    const note = notes.find(function(n){ return d.score <= n.max; }) || notes[notes.length-1];
+    doc.roundedRect(20, barY + 3, 140, 5, 2, 2, 'F');
+    if (pct > 0) {
+      doc.setFillColor(77, 102, 84);
+      doc.roundedRect(20, barY + 3, 140 * pct, 5, 2, 2, 'F');
+    }
+    var notes = DIM_NOTES[d.key];
+    var note = notes[notes.length - 1];
+    for (var ni = 0; ni < notes.length; ni++) {
+      if (d.score <= notes[ni].max) { note = notes[ni]; break; }
+    }
     doc.setFontSize(8);
+    doc.setFont('helvetica', 'normal');
     doc.setTextColor(100, 120, 100);
-    var noteLines = doc.splitTextToSize(note.note, pw - 40);
-    doc.text(noteLines.slice(0,2), 20, barY + 13);
-
+    var nLines = doc.splitTextToSize(note.note, pw - 40);
+    doc.text(nLines.slice(0, 2), 20, barY + 13);
     barY += 30;
-  });
+  }
 
-  // ---- PAGE 3: RECOMMENDATIONS ----
+  // Page 3 - Actions
   doc.addPage();
   doc.setFillColor(255, 255, 255);
   doc.rect(0, 0, pw, ph, 'F');
-
-  // Header bar
   doc.setFillColor(33, 53, 38);
   doc.rect(0, 0, pw, 18, 'F');
   doc.setTextColor(230, 239, 205);
   doc.setFontSize(10);
-  doc.setFont('helvetica','bold');
+  doc.setFont('helvetica', 'bold');
   doc.text('WHAT TO FOCUS ON', 20, 12);
-
   doc.setFontSize(16);
-  doc.setFont('helvetica','bold');
+  doc.setFont('helvetica', 'bold');
   doc.setTextColor(33, 53, 38);
   doc.text('Three actions for this week.', 20, 35);
   doc.setFontSize(10);
-  doc.setFont('helvetica','normal');
+  doc.setFont('helvetica', 'normal');
   doc.setTextColor(80, 100, 80);
   doc.text('Based on your scores, here is where the highest-leverage shifts are.', 20, 44);
 
-  const actions = [
-    {label:'By tomorrow',text:"Audit your last five ER conversations. For each one — did you set clear confidentiality parameters upfront? Did you close the loop? Did you explain the process, not just the outcome? Identify your pattern, not the exception."},
-    {label:'By Thursday',text:"Identify one decision in the last 90 days applied inconsistently by title or relationship. Decide how you're going to address it — a direct conversation, a documented process change, or a clear policy clarification. Don't let it sit."},
-    {label:'By Friday',text:"Schedule one informal touchpoint with a department you only show up to for HR reasons. No agenda, no HR business. Two-line message: \"I'd like to be available if anything is on your mind. I'll be around Thursday at 2.\""}
+  var actions = [
+    { when: 'By tomorrow', text: 'Audit your last five ER conversations. For each one, did you set clear confidentiality parameters upfront? Did you close the loop? Did you explain the process, not just the outcome? Identify your pattern, not the exception.' },
+    { when: 'By Thursday', text: 'Identify one decision in the last 90 days applied inconsistently by title or relationship. Decide how you are going to address it. A direct conversation, a documented process change, or a clear policy clarification. Do not let it sit.' },
+    { when: 'By Friday', text: 'Schedule one informal touchpoint with a department you only show up to for HR reasons. No agenda, no HR business. Just go. Be a person.' }
   ];
 
-  let actY = 58;
-  actions.forEach(function(a, i) {
-    // Number circle
+  var actY = 58;
+  for (var ai2 = 0; ai2 < actions.length; ai2++) {
     doc.setFillColor(33, 53, 38);
     doc.circle(26, actY + 4, 5, 'F');
     doc.setTextColor(230, 239, 205);
     doc.setFontSize(9);
-    doc.setFont('helvetica','bold');
-    doc.text(String(i+1), 26, actY + 6.5, {align:'center'});
-
+    doc.setFont('helvetica', 'bold');
+    doc.text(String(ai2 + 1), 26, actY + 6.5, { align: 'center' });
     doc.setFontSize(11);
-    doc.setFont('helvetica','bold');
+    doc.setFont('helvetica', 'bold');
     doc.setTextColor(33, 53, 38);
-    doc.text(a.label, 36, actY + 2);
-
+    doc.text(actions[ai2].when, 36, actY + 2);
     doc.setFontSize(9);
-    doc.setFont('helvetica','normal');
+    doc.setFont('helvetica', 'normal');
     doc.setTextColor(80, 100, 80);
-    var lines = doc.splitTextToSize(a.text, pw - 56);
-    doc.text(lines, 36, actY + 9);
-    actY += 8 + lines.length * 4.5 + 10;
-  });
+    var aLines = doc.splitTextToSize(actions[ai2].text, pw - 56);
+    doc.text(aLines, 36, actY + 9);
+    actY += 8 + aLines.length * 4.5 + 10;
+  }
 
-  // CTA box
   doc.setFillColor(230, 239, 205);
   doc.roundedRect(20, ph - 80, pw - 40, 55, 4, 4, 'F');
   doc.setFontSize(12);
-  doc.setFont('helvetica','bold');
+  doc.setFont('helvetica', 'bold');
   doc.setTextColor(33, 53, 38);
   doc.text('Ready to go deeper?', 30, ph - 64);
   doc.setFontSize(9);
-  doc.setFont('helvetica','normal');
+  doc.setFont('helvetica', 'normal');
   doc.setTextColor(50, 75, 57);
-  var ctaLines = doc.splitTextToSize('A free 30-minute conversation with Preston can help you identify the two or three shifts that would make the biggest difference in how employees experience HR.', pw - 80);
-  doc.text(ctaLines, 30, ph - 55);
+  var ctaL = doc.splitTextToSize('A free 30-minute conversation with Preston can help you identify the two or three shifts that would make the biggest difference in how employees experience you as their HR professional.', pw - 80);
+  doc.text(ctaL, 30, ph - 55);
   doc.setFontSize(10);
-  doc.setFont('helvetica','bold');
+  doc.setFont('helvetica', 'bold');
   doc.setTextColor(33, 53, 38);
   doc.text('guidelinetalent-free-coaching-session.youcanbook.me', 30, ph - 33);
 
-  return doc.output('datauristring').split(',')[1];
+  doc.save('HR-Trust-Assessment-' + userName.replace(/\s+/g, '-') + '.pdf');
 }
 
-/* ============================================================
-   API SUBMISSION
-============================================================ */
-async function sendToAPI(name, email, scores, total, tier, sessionReq, pdfBase64) {
-  try {
-    await fetch('/api/submit', {
-      method: 'POST',
-      headers: {'Content-Type':'application/json'},
-      body: JSON.stringify({
-        name: name,
-        email: email,
-        scores: scores,
-        total: total,
-        tier: tier.label,
-        tierDesc: tier.desc,
-        sessionRequest: sessionReq,
-        pdfBase64: pdfBase64 || ''
-      })
-    });
-  } catch(e) {
-    console.log('API call failed — showing results anyway:', e);
-  }
-}
-
-/* ============================================================
-   PDF DOWNLOAD
-============================================================ */
-function downloadPDF() {
-  if (!lastScores || !lastTier) return;
-  drawRadarOnCanvas('pdf-radar', lastScores, true, function() {
-    const b64 = generatePDF(userName, lastScores, lastTotal, lastTier);
-    if (!b64) { alert('PDF generation requires jsPDF to load. Please check your connection.'); return; }
-    const link = document.createElement('a');
-    link.href = 'data:application/pdf;base64,' + b64;
-    link.download = 'HR-Trust-Assessment-' + userName.replace(/\s+/g,'-') + '.pdf';
-    link.click();
+// ---- API ----
+function sendToAPI(name, email, scores, total, tier, session) {
+  fetch('/api/submit', {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify({
+      name: name,
+      email: email,
+      scores: scores,
+      total: total,
+      tier: tier.label,
+      tierDesc: tier.desc,
+      sessionRequest: session
+    })
+  }).catch(function(e) {
+    console.log('API note:', e);
   });
 }
 
-/* ============================================================
-   RETAKE
-============================================================ */
+// ---- RETAKE ----
 function retake() {
-  Object.keys(answers).forEach(function(k){ delete answers[k]; });
+  answers = {};
   curSection = 0;
   userName = '';
   userEmail = '';
-  sessionRequest = false;
-  lastScores = null;
-  document.getElementById('field-name').value = '';
-  document.getElementById('field-email').value = '';
-  document.getElementById('check-session').checked = false;
-  document.getElementById('submit-error').classList.remove('show');
-  startAssessment();
+  sessionReq = false;
+  savedScores = null;
+  document.getElementById('f-name').value = '';
+  document.getElementById('f-email').value = '';
+  document.getElementById('f-session').checked = false;
+  document.getElementById('cap-err').classList.remove('show');
+  curSection = 0;
+  renderSection(0);
+  showScreen('screen-section');
 }
-<script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+
+// ---- INIT ----
+document.getElementById('begin-btn').addEventListener('click', function() {
+  curSection = 0;
+  renderSection(0);
+  showScreen('screen-section');
+});
+
+document.getElementById('submit-btn').addEventListener('click', function() {
+  submitCapture();
+});
+
+document.getElementById('dl-btn').addEventListener('click', function() {
+  downloadPDF();
+});
+
+document.getElementById('retake-btn').addEventListener('click', function() {
+  retake();
+});
 </script>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
 </body>
 </html>
